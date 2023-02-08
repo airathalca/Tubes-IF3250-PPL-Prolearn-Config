@@ -1,0 +1,78 @@
+version: "3.8"
+services:
+  # Nginx Server
+  proxy:
+    image: nginx:1.23.3
+    container_name: prolearn-proxy
+    restart: always
+    hostname: prolearn-proxy-server
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - app-network
+
+  # Nest.js Server Framework
+  api:
+    build:
+      context: ./prolearn-backend
+      dockerfile: Dockerfile
+    container_name: prolearn-api
+    restart: always
+    hostname: prolearn-api-server
+    volumes:
+      - ./prolearn-backend:/app
+    networks:
+      - app-network
+
+  # Next.js Client Framework
+  client:
+    build:
+      context: ./prolearn-frontend
+      dockerfile: Dockerfile
+    container_name: prolearn-client
+    restart: always
+    hostname: prolearn-client-server
+    volumes:
+      - ./prolearn-frontend:/app
+    networks:
+      - app-network
+    depends_on:
+      - database
+      - cache
+
+  # PostgreSQL Database
+  database:
+    image: postgres:15.1
+    container_name: prolearn-database
+    restart: always
+    hostname: prolearn-database-server
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Redis Cache
+  cache:
+    image: redis:7.0.8
+    container_name: prolearn-cache
+    restart: always
+    hostname: prolearn-cache-server
+    volumes:
+      - redis:/data
+    networks:
+      - app-network
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  postgres:
+    driver: local
+  redis:
+    driver: local
