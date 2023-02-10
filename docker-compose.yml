@@ -23,7 +23,7 @@ services:
     # restart: always
     hostname: prolearn-api-server
     volumes:
-      - backend:/app
+      - ./prolearn-backend:/app
     networks:
       - app-network
 
@@ -36,7 +36,7 @@ services:
     # restart: always
     hostname: prolearn-client-server
     volumes:
-      - frontend:/app
+      - ./prolearn-frontend:/app
     networks:
       - app-network
     depends_on:
@@ -79,8 +79,4 @@ volumes:
   postgres:
     driver: local
   redis:
-    driver: local
-  frontend:
-    driver: local
-  backend:
     driver: local
