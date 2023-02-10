@@ -26,6 +26,9 @@ services:
       - backend:/app
     networks:
       - app-network
+    depends_on:
+      - database
+      - cache
 
   # Next.js Client Framework
   client:
@@ -39,9 +42,6 @@ services:
       - frontend:/app
     networks:
       - app-network
-    depends_on:
-      - database
-      - cache
 
   # PostgreSQL Database
   database:
