@@ -27,8 +27,12 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME}
       POSTGRES_PORT: ${POSTGRES_PORT}
-      REDIS_HOSTNAME: ${REDIS_HOSTNAME}
-      REDIS_PORT: ${REDIS_PORT}
+      DATABASE_CACHE_HOSTNAME: ${DATABASE_CACHE_HOSTNAME}
+      DATABASE_CACHE_PORT: ${DATABASE_CACHE_PORT}
+      API_CACHE_HOSTNAME: ${API_CACHE_HOSTNAME}
+      API_CACHE_PORT: ${API_CACHE_PORT}
+      QUEUE_CACHE_HOSTNAME: ${QUEUE_CACHE_HOSTNAME}
+      QUEUE_CACHE_PORT: ${QUEUE_CACHE_PORT}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
@@ -68,12 +72,34 @@ services:
     networks:
       - app-network
 
-  # Redis Cache
-  cache:
+  # Database Cache
+  database-cache:
     image: redis:7.0.8
-    container_name: prolearn-cache
+    container_name: prolearn-database-cache
     restart: always
-    hostname: prolearn-cache-server
+    hostname: prolearn-database-cache-server
+    volumes:
+      - redis:/data
+    networks:
+      - app-network
+
+  # API Cache
+  api-cache:
+    image: redis:7.0.8
+    container_name: prolearn-api-cache
+    restart: always
+    hostname: prolearn-api-cache-server
+    volumes:
+      - redis:/data
+    networks:
+      - app-network
+
+  # Queue
+  queue:
+    image: redis:7.0.8
+    container_name: prolearn-queue
+    restart: always
+    hostname: prolearn-queue-server
     volumes:
       - redis:/data
     networks:
