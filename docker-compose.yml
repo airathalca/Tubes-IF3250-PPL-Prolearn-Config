@@ -39,6 +39,11 @@ services:
       - /app/node_modules
     networks:
       - app-network
+    depends_on:
+      - database
+      - database-cache
+      - api-cache
+      - queue
 
   # Next.js Client Framework
   client:
@@ -53,9 +58,6 @@ services:
       - /app/node_modules
     networks:
       - app-network
-    depends_on:
-      - database
-      - cache
 
   # PostgreSQL Database
   database:
