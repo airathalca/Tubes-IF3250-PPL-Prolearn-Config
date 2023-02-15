@@ -34,6 +34,8 @@ services:
       QUEUE_CACHE_HOSTNAME: ${QUEUE_CACHE_HOSTNAME}
       QUEUE_CACHE_PORT: ${QUEUE_CACHE_PORT}
       BUCKET_NAME: ${BUCKET_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      EXPIRES_IN: ${EXPIRES_IN}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
