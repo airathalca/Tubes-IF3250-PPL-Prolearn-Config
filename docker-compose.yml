@@ -33,6 +33,7 @@ services:
       API_CACHE_PORT: ${API_CACHE_PORT}
       QUEUE_CACHE_HOSTNAME: ${QUEUE_CACHE_HOSTNAME}
       QUEUE_CACHE_PORT: ${QUEUE_CACHE_PORT}
+      BUCKET_NAME: ${BUCKET_NAME}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
