@@ -79,7 +79,7 @@ services:
     restart: always
     hostname: prolearn-database-cache-server
     volumes:
-      - redis:/data
+      - database-cache:/data
     networks:
       - app-network
 
@@ -90,7 +90,7 @@ services:
     restart: always
     hostname: prolearn-api-cache-server
     volumes:
-      - redis:/data
+      - api-cache:/data
     networks:
       - app-network
 
@@ -101,7 +101,7 @@ services:
     restart: always
     hostname: prolearn-queue-server
     volumes:
-      - redis:/data
+      - queue:/data
     networks:
       - app-network
 
@@ -114,5 +114,9 @@ networks:
 volumes:
   postgres:
     driver: local
-  redis:
+  database-cache:
+    driver: local
+  api-cache:
+    driver: local
+  queue:
     driver: local
