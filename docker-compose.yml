@@ -36,6 +36,8 @@ services:
       BUCKET_NAME: ${BUCKET_NAME}
       JWT_SECRET: ${JWT_SECRET}
       EXPIRES_IN: ${EXPIRES_IN}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
