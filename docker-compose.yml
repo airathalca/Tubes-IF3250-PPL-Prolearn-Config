@@ -42,8 +42,6 @@ services:
       - app-network
     depends_on:
       - database
-      - database-cache
-      - api-cache
       - queue
 
   # Next.js Client Framework
