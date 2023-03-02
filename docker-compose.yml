@@ -27,16 +27,11 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME}
       POSTGRES_PORT: ${POSTGRES_PORT}
-      DATABASE_CACHE_HOSTNAME: ${DATABASE_CACHE_HOSTNAME}
-      DATABASE_CACHE_PORT: ${DATABASE_CACHE_PORT}
-      API_CACHE_HOSTNAME: ${API_CACHE_HOSTNAME}
-      API_CACHE_PORT: ${API_CACHE_PORT}
       QUEUE_CACHE_HOSTNAME: ${QUEUE_CACHE_HOSTNAME}
       QUEUE_CACHE_PORT: ${QUEUE_CACHE_PORT}
       GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS}
       BUCKET_NAME: ${BUCKET_NAME}
       JWT_SECRET: ${JWT_SECRET}
-      EXPIRES_IN: ${EXPIRES_IN}
       ADMIN_USERNAME: ${ADMIN_USERNAME}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     hostname: prolearn-api-server
@@ -77,28 +72,6 @@ services:
     hostname: prolearn-database-server
     volumes:
       - postgres:/var/lib/postgresql/data
-    networks:
-      - app-network
-
-  # Database Cache
-  database-cache:
-    image: redis:7.0.8
-    container_name: prolearn-database-cache
-    restart: always
-    hostname: prolearn-database-cache-server
-    volumes:
-      - database-cache:/data
-    networks:
-      - app-network
-
-  # API Cache
-  api-cache:
-    image: redis:7.0.8
-    container_name: prolearn-api-cache
-    restart: always
-    hostname: prolearn-api-cache-server
-    volumes:
-      - api-cache:/data
     networks:
       - app-network
 
