@@ -43,7 +43,6 @@ services:
       - app-network
     depends_on:
       - database
-      - queue
 
   # Next.js Client Framework
   client:
@@ -71,17 +70,6 @@ services:
     hostname: prolearn-database-server
     volumes:
       - postgres:/var/lib/postgresql/data
-    networks:
-      - app-network
-
-  # Queue
-  queue:
-    image: redis:7.0.8
-    container_name: prolearn-queue
-    restart: always
-    hostname: prolearn-queue-server
-    volumes:
-      - queue:/data
     networks:
       - app-network
 
