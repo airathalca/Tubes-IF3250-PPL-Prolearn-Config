@@ -28,8 +28,6 @@ services:
       DATABASE_CACHE_DURATION: ${DATABASE_CACHE_DURATION}
       POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME}
       POSTGRES_PORT: ${POSTGRES_PORT}
-      QUEUE_CACHE_HOSTNAME: ${QUEUE_CACHE_HOSTNAME}
-      QUEUE_CACHE_PORT: ${QUEUE_CACHE_PORT}
       GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS}
       BUCKET_NAME: ${BUCKET_NAME}
       JWT_SECRET: ${JWT_SECRET}
@@ -84,9 +82,5 @@ networks:
 volumes:
   postgres:
     driver: local
-  database-cache:
-    driver: local
   api-cache:
-    driver: local
-  queue:
     driver: local
