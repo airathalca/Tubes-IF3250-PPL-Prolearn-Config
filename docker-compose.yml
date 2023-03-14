@@ -51,6 +51,8 @@ services:
       dockerfile: Dockerfile
     container_name: prolearn-client
     restart: always
+    environment:
+      API_HOSTNAME: ${API_HOSTNAME}
     hostname: prolearn-client-server
     volumes:
       - ./prolearn-frontend:/app
