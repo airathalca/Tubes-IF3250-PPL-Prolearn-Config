@@ -31,6 +31,7 @@ services:
       GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS}
       BUCKET_NAME: ${BUCKET_NAME}
       JWT_SECRET: ${JWT_SECRET}
+      EXPIRES_IN: ${EXPIRES_IN}
       ADMIN_USERNAME: ${ADMIN_USERNAME}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     hostname: prolearn-api-server
@@ -51,6 +52,7 @@ services:
     restart: always
     environment:
       API_HOSTNAME: ${API_HOSTNAME}
+      EXPIRES_IN: ${EXPIRES_IN}
     hostname: prolearn-client-server
     volumes:
       - ./prolearn-frontend:/app
