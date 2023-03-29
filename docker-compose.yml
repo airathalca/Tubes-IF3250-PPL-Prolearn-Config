@@ -38,8 +38,6 @@ services:
       SSHUSER: ${SSHUSER}
       SSHPASS: ${SSHPASS}
     hostname: prolearn-api-server
-    ports:
-      - "8080:8080"
     volumes:
       - ./prolearn-backend:/app
       - /app/node_modules
