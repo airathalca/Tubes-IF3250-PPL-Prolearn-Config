@@ -38,7 +38,8 @@ services:
       SSHUSER: ${SSHUSER}
       SSHPASS: ${SSHPASS}
     hostname: prolearn-api-server
-    # command: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+    ports:
+      - "8080:8080"
     volumes:
       - ./prolearn-backend:/app
       - /app/node_modules
