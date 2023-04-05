@@ -37,6 +37,7 @@ services:
       SSHHOST: ${SSHHOST}
       SSHUSER: ${SSHUSER}
       SSHPASS: ${SSHPASS}
+      SSHTIMEOUT: ${SSHTIMEOUT}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
