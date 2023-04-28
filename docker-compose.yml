@@ -86,9 +86,6 @@ services:
       dockerfile: Dockerfile
     container_name: prolearn-compiler
     restart: always
-    environment:
-      SSHUSER: ${SSHUSER}
-      SSHPASS: ${SSHPASS}
     hostname: prolearn-compiler-server
     volumes:
       - compiler:/mnt
