@@ -38,6 +38,7 @@ services:
       SSHUSER: ${SSHUSER}
       SSHPASS: ${SSHPASS}
       SSHTIMEOUT: ${SSHTIMEOUT}
+      SSHPORT: ${SSHPORT}
     hostname: prolearn-api-server
     volumes:
       - ./prolearn-backend:/app
